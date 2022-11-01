@@ -1,0 +1,31 @@
+package Main.ss;
+
+public class removeDuplicates {
+
+	public static void main(String[] args) {
+		int[] a = {55,66,55,8,9,8,7,56};
+		
+		int highest_Value = Integer.MIN_VALUE;
+		int second_highest = Integer.MIN_VALUE;
+		
+		int len = a.length;
+		for(int i=0;i<len;i++)
+		{
+			if(a[i]>highest_Value)
+			{
+			   second_highest = highest_Value;
+			   highest_Value  = a[i];
+			}
+			if(a[i]!=highest_Value && a[i]>second_highest)
+			{
+				second_highest = a[i];
+			}
+		}
+		
+		System.out.println("second_highest"+second_highest);
+		
+		
+
+	}
+
+}

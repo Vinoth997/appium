@@ -1,0 +1,10 @@
+package parallel;
+
+import org.testng.annotations.DataProvider;
+
+public class dataUtlis {
+	
+	@DataProvider
+	public String[][] 
+
+}

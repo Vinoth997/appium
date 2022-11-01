@@ -1,0 +1,43 @@
+package Test.ss;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class table {
+
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver;
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.w3schools.com/css/css_table.asp");
+		String title=driver.getTitle();
+		System.out.println(title);
+		String url=driver.getCurrentUrl();
+		System.out.println(url);
+		WebElement table = driver.findElement(By.xpath("(//table/tbody/tr[2])[1]"));
+		String tabletext = table.getText();
+		System.out.println(tabletext);
+		List<WebElement> table2 = driver.findElements(By.xpath("((//table[@id='customers'])/tbody/tr)"));
+		for(int i =0;i<table2.size();i++) {
+			String text = table2.get(i).getText();
+			System.out.println(text);
+		}
+		
+		Thread.sleep(4000);
+		driver.get("https://www.guru99.com/xpath-selenium.html");
+		List<WebElement> table1 = driver.findElements(By.xpath("//table[@class='table table-striped']//tr"));
+		for(int i =0;i<table1.size();i++) {
+			String table1text = table1.get(i).getText();
+			System.out.println(table1text);
+		}
+
+	}
+
+}

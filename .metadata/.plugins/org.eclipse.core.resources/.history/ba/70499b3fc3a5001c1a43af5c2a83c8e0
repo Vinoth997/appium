@@ -1,0 +1,48 @@
+package Test.ss;
+
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class newMessageWindow {
+
+	WebDriver driver;
+	Date sessionTime = new Date();
+	@BeforeTest
+	public void BrowserOpen() {
+		System.out.println(" Session Started : "+sessionTime);
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://nxtgenaiacademy.com/multiplewindows/");
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+	}
+		
+	@Test
+	public void MessageWindow() {
+		WebElement messagewindow = driver.findElement(By.xpath("//button[@name='newmessagewindow321']"));
+		WebDriverWait wait = new WebDriverWait(driver,60);
+		messagewindow.click();
+		WebElement messagetext = driver.findElement(By.xpath("//html//body/text()"));
+		wait.until(ExpectedConditions
+				.textToBePresentInElement(messagetext, "Welcome to Vinoth Rathinam Tutorials. Happy Learning"));
+		
+	}
+	
+	@AfterTest
+	public void TearDown() {
+		driver.close();
+		System.out.println(" Session Ended : "+sessionTime);
+	}
+}

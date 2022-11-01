@@ -1,0 +1,33 @@
+package parallel;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class parallel {
+	WebDriver driver;
+
+	@BeforeTest
+	public void browserOpen() {
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://codenboxautomationlab.com/registration-form/");
+	}
+	
+	@Test
+	public void register() {
+		driver.findElement(By.xpath("//input[@name='fname']")).sendKeys();
+		driver.findElement(By.xpath("//input[@name='lname']")).sendKeys();
+	}
+	
+	@AfterTest
+	public void tearDown() {
+		driver.quit();
+	}
+}

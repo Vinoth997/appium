@@ -1,0 +1,13 @@
+package utils;
+
+import org.testng.annotations.DataProvider;
+
+public class DataUtils {
+	
+	@DataProvider(indices = {1,2}, parallel=!true)
+	public String[][] getData(){
+		
+		return data;
+	}
+
+}

@@ -1,0 +1,16 @@
+package utils;
+
+import org.testng.annotations.DataProvider;
+
+public class DataUtils {
+	
+	@DataProvider(parallel=!true)
+	public String[][] getData(){
+		
+		String[][] excelData = readPatientCredentials.getExcelData();
+		
+		return excelData;
+		
+	}
+
+}

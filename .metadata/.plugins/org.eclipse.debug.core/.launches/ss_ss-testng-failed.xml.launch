@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.testng.eclipse.launchconfig">
+    <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.m2e.launchconfig.classpathProvider"/>
+    <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.testng.remote.RemoteTestNG"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="ss"/>
+    <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.m2e.launchconfig.sourcepathProvider"/>
+    <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-ea  -DfailedTests=&quot;test2,test3,test,afterTest&quot; "/>
+    <listAttribute key="org.testng.eclipse.SUITE_TEST_LIST">
+        <listEntry value="D:\BackUp\eclipse-workspace\ss\test-output/testng-failed.xml"/>
+    </listAttribute>
+    <intAttribute key="org.testng.eclipse.TYPE" value="3"/>
+</launchConfiguration>

@@ -1,0 +1,28 @@
+package parallel;
+
+import org.openqa.selenium.By;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import utils.DataUtils;
+
+public class doctorLogin extends browser.launchBrowser {
+	
+	@BeforeTest
+	public void launchBrowser() {
+		driver = browseropen();
+	}
+		
+	@Test(dataProvider = "getDoctorData",dataProviderClass = DataUtils.class)
+	public void login(String data[]) {
+		
+//		System.err.println(data[0]);
+//		System.err.println(data[1]);
+		driver.findElement(By.xpath("//input[@id='edit-name--2']")).sendKeys(data[0]);
+		driver.findElement(By.xpath("//input[@id='edit-pass--2']")).sendKeys(data[1]);
+		driver.findElement(By.xpath("//button[@id='edit-submit--2']")).click();
+		
+	}
+	
+
+}

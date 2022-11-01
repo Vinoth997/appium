@@ -1,0 +1,14 @@
+package utils;
+
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class readExcel {
+	
+	public static void main(String[] args) {
+		
+		String filelocation = "./test-data/Login-data.xlsx";
+		XSSFWorkbook wbook = new XSSFWorkbook(filelocation);
+		
+	}
+
+}

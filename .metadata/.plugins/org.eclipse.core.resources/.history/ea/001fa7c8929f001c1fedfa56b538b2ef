@@ -1,0 +1,66 @@
+package Test.ss;
+
+import java.util.Date;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestListener;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import listeners.TestNGlisteners;
+@Listeners(listeners.TestNGlisteners.class)
+
+public class newTest extends TestNGlisteners implements ITestListener {
+
+	WebDriver driver;
+	Date time = new Date();
+	@BeforeTest
+	public void BrowserOpen() {
+		System.out.println("Session Started : " + time);
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://nxtgenaiacademy.com/demo-site/");
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+	}
+	
+	@Test
+	public void HomePageMenu() {
+		List<WebElement> menulist = driver.findElements(By.xpath("//ul[@id='menu-main']/li[contains(@id,'menu-item')]/a[1]/span[1]"));
+		for(int i=0;i<menulist.size();i++) {
+			String menulisttext = menulist.get(i).getText();
+			System.out.println("Menu : "+menulisttext);
+		}
+	}
+	
+	@Test(dependsOnMethods = "HomePageMenu")
+	public void RegisterUserLabels() {
+		List<WebElement> labels = driver.findElements(By.xpath("//label[@class='vfb-desc']"));
+		for(int i=0;i<labels.size();i++) {
+			String labelstext = labels.get(i).getText();
+			System.out.println("Labels : "+labelstext);
+		}
+	}
+	
+	@Test
+	public void ResgisterUser() {
+		WebElement firstname = driver.findElement(By.xpath("//input[@id='vfb-5']"));
+		firstname.sendKeys("Victor");
+		WebElement lastname = driver.findElement(By.xpath("//input[@id='vfb-7']"));
+		lastname.sendKeys("Sara");
+		WebElement gender = driver.findElement(By.xpath("//input[@value='Male']"));
+	}
+	
+	@AfterTest
+	public void TearDown() {
+		driver.close();
+		System.out.println("Session Ended : "+time);
+		
+	}
+}

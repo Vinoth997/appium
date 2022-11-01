@@ -1,0 +1,142 @@
+package Test.ss;
+
+import java.util.Date;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+import org.testng.ITestListener;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import listeners.TestNGlisteners;
+@Listeners(listeners.TestNGlisteners.class)
+
+public class newTest extends TestNGlisteners implements ITestListener {
+
+	WebDriver driver;
+	Date time = new Date();
+	@BeforeTest
+	public void BrowserOpen() {
+		System.out.println("Session Started : " + time);
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://nxtgenaiacademy.com/demo-site/");
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+	}
+	
+	@Test(priority = 1)
+	public void HomePageMenu() {
+		List<WebElement> menulist = driver.findElements(By.xpath("//ul[@id='menu-main']/li[contains(@id,'menu-item')]/a[1]/span[1]"));
+		for(int i=0;i<menulist.size();i++) {
+			String menulisttext = menulist.get(i).getText();
+			System.out.println("Menu : "+menulisttext);
+		}
+	}
+	
+	@Test(priority = 2)
+	public void RegisterUserLabels() {
+		List<WebElement> labels = driver.findElements(By.xpath("//label[@class='vfb-desc']"));
+		for(int i=0;i<labels.size();i++) {
+			String labelstext = labels.get(i).getText();
+			System.out.println("Labels : "+labelstext);
+		}
+	}
+	
+	@Test(priority = 3)
+	public void ResgisterUser() throws InterruptedException {
+		WebElement firstname = driver.findElement(By.xpath("//input[@id='vfb-5']"));
+		firstname.sendKeys("Victor");
+		WebElement lastname = driver.findElement(By.xpath("//input[@id='vfb-7']"));
+		lastname.sendKeys("Sara");
+		WebElement gender = driver.findElement(By.xpath("//input[@value='Male']"));
+		gender.click();
+		WebElement address = driver.findElement(By.xpath("//input[@id='vfb-13-address']"));
+		address.sendKeys("3A street name");
+		WebElement city = driver.findElement(By.xpath("//input[@id='vfb-13-city']"));
+		city.sendKeys("Chennai");
+		WebElement state = driver.findElement(By.xpath("//input[@id='vfb-13-state']"));
+		state.sendKeys("Tamilnadu");
+		Select country = new Select(driver.findElement(By.xpath("//select[@id='vfb-13-country']")));
+		country.selectByValue("India");
+		WebElement email = driver.findElement(By.xpath("//input[@id='vfb-14']"));
+		email.sendKeys("victoriq@bgmi.com");
+		WebElement dateofdemo = driver.findElement(By.xpath("//input[@id='vfb-18']"));
+		dateofdemo.sendKeys("03/09/2022");
+		Thread.sleep(4000);
+		List<WebElement> courses = driver.findElements(By.xpath("//input[@type='checkbox']"));
+		for(int i=0;i<courses.size();i++) {
+			String coursetxt = courses.get(i).getText();
+			if(coursetxt.contains("Selenium WebDriver"+"TestNG")) {
+				courses.get(i).click();
+			}
+		}
+		Thread.sleep(4000);
+		WebElement checkbox1 = driver.findElement(By.xpath("//input[@id='vfb-20-0']"));
+		checkbox1.click();
+		WebElement checkbox2 = driver.findElement(By.xpath("//input[@id='vfb-20-2']"));
+		checkbox2.click();
+		WebElement checkbox3 = driver.findElement(By.xpath("//input[@id='vfb-20-3']"));
+		checkbox3.click();
+		WebElement checkbox4 = driver.findElement(By.xpath("//input[@id='vfb-20-4']"));
+		checkbox4.click();
+		WebElement verificationnumber = driver.findElement(By.xpath("//label[contains(text(),'Example:')]"));
+		String verificationnumbertxt = verificationnumber.getText();
+		String numberOnly= verificationnumbertxt.replaceAll("[^0-9]", "");
+		WebElement verifynumber = driver.findElement(By.xpath("//input[@id='vfb-3']"));
+		verifynumber.sendKeys(numberOnly);
+		WebElement submit = driver.findElement(By.xpath("//input[@id='vfb-4']"));
+		submit.click();
+		Thread.sleep(2000);
+		WebElement successmsg = driver.findElement(By.xpath("(//div[@class='elementor-shortcode'])[1]"));
+		String successtext = successmsg.getText();
+		System.out.println(successtext);
+	}
+	
+	@Test(priority =4)
+	public void WebTable() {
+		WebElement webtablebtn = driver.findElement(By.xpath("//button[text()='  Web Table  ']"));
+		webtablebtn.click();
+		String expected = "Demo Site – WebTable – NxtGen A.I Academy";
+		String actual = driver.getTitle();
+		Assert.assertEquals(actual, expected);
+		List<WebElement> tablecontent = driver.findElements(By.xpath("//tbody/tr/td[1]"));
+		List<WebElement> tabledata = driver.findElements(By.xpath("//tbody/tr/td[2]"));
+		for(int i=0;i<tablecontent.size();i++) {
+			for(int j=i;j<tabledata.size();j++) {
+				String ttext = tablecontent.get(i).getText();
+				String tdata = tabledata.get(j).getText();
+				System.out.println(ttext+" - "+tdata);
+				j=j+tabledata.size();
+			}
+		}
+	}
+	
+	@Test(priority =5)
+	public void MultipleTable() {
+		WebElement heading = driver.findElement(By.xpath("(//h2)[2]"));
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].scrollIntoView(true)", heading);
+		String headingtxt = heading.getText();
+		System.out.println(headingtxt);
+		Select prog = new Select(driver.findElement(By.xpath("//select[@name='programming']")));
+		prog.selectByVisibleText("Java");
+		prog.selectByVisibleText("Python");
+		prog.selectByIndex(4);
+	}
+	
+	@AfterTest
+	public void TearDown() {
+		//driver.close();
+		System.out.println("Session Ended : "+time);
+		
+	}
+}

@@ -1,0 +1,65 @@
+package Main.ss;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class myntra {
+	
+	WebDriver driver;
+
+	@BeforeTest
+	public void BrowserOpen() {
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.myntra.com/men-tshirts");
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+	}
+	
+	@Test
+	public void tShirtCount() {
+		List<Integer> mylist = new ArrayList<Integer>();
+		//List<WebElement> tshirtCollection = driver.findElements(By.xpath("//div[@class='product-productMetaInfo']"));
+		List<WebElement> tshirtPrice = driver.findElements(By.xpath("//div[@class='product-price']//span[@class='product-discountedPrice']"));
+		for(int i = 0;i<tshirtPrice.size();i++) {
+			String tshirt = tshirtPrice.get(i).getText();
+			//System.out.println(tshirt);
+			String remove = tshirt.replaceAll("[^0-9]", "");
+			int tshirtPriceInt = Integer.parseInt(remove);
+			//System.out.println(tshirtPriceInt);
+			mylist.add(tshirtPriceInt);
+		}
+		int minPrice = mylist.get(0);
+		int num = mylist.size();
+		for(int j=1;j<num;j++) {
+			if(mylist.get(j)<minPrice) {
+				minPrice = mylist.get(j);
+			}
+		}
+		System.out.println("Minimum Price : "+minPrice);
+		List<WebElement> price = driver.findElements(By.xpath("//span[@class='product-discountedPrice']"));
+		for (int k=0;k<price.size();k++) {
+			String shirtPrice = price.get(k).getText();
+			String removen = shirtPrice.replaceAll("[^0-9]", "");
+			int tshirtPriceInte = Integer.parseInt(removen);
+			List<WebElement> tshirtName = driver.findElements(By.xpath("//span[@class='product-discountedPrice']//..//../parent::div[@class='product-productMetaInfo']/h3"));
+			if(tshirtPriceInte == minPrice) {
+				System.out.println("Brand Name : "+tshirtName.get(k).getText());
+			}
+		}
+	}
+	
+	@AfterTest
+	public void tearDown() {
+		driver.close();
+	}
+}

@@ -1,0 +1,11 @@
+package Test.ss;
+
+public class reverse {
+
+	 public static void main(String[] args){  
+	        StringBuilder builder=new StringBuilder("This is a sample test");  
+	        builder.reverse(); 
+	        System.out.println(builder);  
+	    }  
+	
+}

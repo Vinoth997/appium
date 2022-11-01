@@ -1,0 +1,16 @@
+commentBorder=\#76715E | null | null | true | null | null
+commentText=\#76715E | null | null | true | null | null
+declBoder=\#A6E22E | null | null | null | null | null
+doctypeExternalId=\#A6E22E | null | null | null | null | null
+doctypeExternalPubref=\#A6E22E | null | null | null | null | null
+doctypeExtrenalSysref=\#A6E22E | null | null | null | null | null
+doctypeName=\#A6E22E | null | null | null | null | null
+eclipse.preferences.version=1
+entityReference=\#F92672 | null | null | null | null | null
+overriddenByCSS=,doctypeExternalPubref,tagBorder,declBoder,doctypeExtrenalSysref,tagName,commentText,doctypeExternalId,doctypeName,tagAttributeValue,tagAttributeEquals,entityReference,commentBorder,tagAttributeName,xmlContent,
+tagAttributeEquals=\#BED6FF | null | null | null | null | null
+tagAttributeName=\#FD971F | null | false | null | null | null
+tagAttributeValue=\#ECE47E | null | null | null | null | null
+tagBorder=\#F8F8E8 | null | false | null | null | null
+tagName=\#89ABFF | null | false | null | null | null
+xmlContent=\#BED6FF | null | null | null | null | null
