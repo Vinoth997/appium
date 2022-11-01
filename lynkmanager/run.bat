@@ -1,0 +1,1 @@
+cd C:\Users\Admin\eclipse-workspace\lynkmanager
