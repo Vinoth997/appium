@@ -1,0 +1,152 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 1048576 bytes for AllocateHeap
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (memory/allocation.inline.hpp:62), pid=15772, tid=22024
+#
+# JRE version:  (9.0+11) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (9.0.4+11, mixed mode, tiered, compressed oops, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: jenkins.maven3.agent.Maven35Main C:\ProgramData\Jenkins\.jenkins\tools\hudson.tasks.Maven_MavenInstallation\Maven C:\ProgramData\Jenkins\war\WEB-INF\lib\remoting-4.11.2.jar C:\ProgramData\Jenkins\.jenkins\plugins\maven-plugin\WEB-INF\lib\maven35-interceptor-1.13.jar C:\ProgramData\Jenkins\.jenkins\plugins\maven-plugin\WEB-INF\lib\maven3-interceptor-commons-1.13.jar 51837
+
+Host: Intel(R) Core(TM) i5-10400 CPU @ 2.90GHz, 12 cores, 15G,  Windows 10 , 64 bit Build 19041 (10.0.19041.1706)
+Time: Sat Jun 04 20:17:00 2022 India Standard Time elapsed time: 0 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000001a4ebb8e800):  JavaThread "Unknown thread" [_thread_in_vm, id=22024, stack(0x00000006b9200000,0x00000006b9300000)]
+
+Stack: [0x00000006b9200000,0x00000006b9300000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x587068]
+V  [jvm.dll+0x69c25e]
+V  [jvm.dll+0x69d17a]
+V  [jvm.dll+0x69d7b3]
+V  [jvm.dll+0x21d198]
+V  [jvm.dll+0x204697]
+V  [jvm.dll+0x2a902a]
+V  [jvm.dll+0x67b33d]
+V  [jvm.dll+0x67c70c]
+V  [jvm.dll+0x3269c9]
+V  [jvm.dll+0x66555e]
+V  [jvm.dll+0x391811]
+V  [jvm.dll+0x3937c1]
+C  [java.exe+0x34f1]
+C  [java.exe+0xe24f]
+C  [java.exe+0xe3f6]
+C  [KERNEL32.DLL+0x17034]
+C  [ntdll.dll+0x52651]
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+[error occurred during error reporting (printing all threads), id 0xe0000001]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+
+[error occurred during error reporting (printing compressed oops mode), id 0xe0000001]
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+0x00007ff6953c0000 - 0x00007ff6953fe000 	C:\ProgramData\Jenkins\.jenkins\tools\hudson.model.JDK\bin\java.exe
+0x00007ff87ca70000 - 0x00007ff87cc65000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007ff87ba30000 - 0x00007ff87baed000 	C:\Windows\System32\KERNEL32.DLL
+0x00007ff87a470000 - 0x00007ff87a73d000 	C:\Windows\System32\KERNELBASE.dll
+0x00007ff87bd20000 - 0x00007ff87bdce000 	C:\Windows\System32\ADVAPI32.dll
+0x00007ff87aac0000 - 0x00007ff87ab5e000 	C:\Windows\System32\msvcrt.dll
+0x00007ff87c980000 - 0x00007ff87ca1c000 	C:\Windows\System32\sechost.dll
+0x00007ff87c400000 - 0x00007ff87c525000 	C:\Windows\System32\RPCRT4.dll
+0x00007ff87c7b0000 - 0x00007ff87c950000 	C:\Windows\System32\USER32.dll
+0x00007ff87aa90000 - 0x00007ff87aab2000 	C:\Windows\System32\win32u.dll
+0x00007ff87bbd0000 - 0x00007ff87bbfa000 	C:\Windows\System32\GDI32.dll
+0x00007ff87a360000 - 0x00007ff87a46b000 	C:\Windows\System32\gdi32full.dll
+0x00007ff87a180000 - 0x00007ff87a21d000 	C:\Windows\System32\msvcp_win.dll
+0x00007ff87a740000 - 0x00007ff87a840000 	C:\Windows\System32\ucrtbase.dll
+0x00007ff85c3a0000 - 0x00007ff85c63a000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.1110_none_60b5254171f9507e\COMCTL32.dll
+0x00007ff878f50000 - 0x00007ff878f5a000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007ff84b230000 - 0x00007ff84b31f000 	C:\ProgramData\Jenkins\.jenkins\tools\hudson.model.JDK\bin\msvcr120.dll
+0x00007ff84b820000 - 0x00007ff84b8c6000 	C:\ProgramData\Jenkins\.jenkins\tools\hudson.model.JDK\bin\msvcp120.dll
+0x0000000069790000 - 0x000000006a1b5000 	C:\ProgramData\Jenkins\.jenkins\tools\hudson.model.JDK\bin\server\jvm.dll
+0x00007ff87c240000 - 0x00007ff87c248000 	C:\Windows\System32\PSAPI.DLL
+0x00007ff864990000 - 0x00007ff864999000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x00007ff863bc0000 - 0x00007ff863be7000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007ff87c740000 - 0x00007ff87c7ab000 	C:\Windows\System32\WS2_32.dll
+0x00007ff8714a0000 - 0x00007ff8714af000 	C:\ProgramData\Jenkins\.jenkins\tools\hudson.model.JDK\bin\verify.dll
+0x00007ff859250000 - 0x00007ff859277000 	C:\ProgramData\Jenkins\.jenkins\tools\hudson.model.JDK\bin\java.dll
+0x00007ff8664d0000 - 0x00007ff8664e6000 	C:\ProgramData\Jenkins\.jenkins\tools\hudson.model.JDK\bin\zip.dll
+0x00007ff871440000 - 0x00007ff87144a000 	C:\ProgramData\Jenkins\.jenkins\tools\hudson.model.JDK\bin\jimage.dll
+0x00007ff877db0000 - 0x00007ff877f94000 	C:\Windows\SYSTEM32\dbghelp.dll
+0x00007ff87a2d0000 - 0x00007ff87a352000 	C:\Windows\System32\bcryptPrimitives.dll
+
+VM Arguments:
+java_command: jenkins.maven3.agent.Maven35Main C:\ProgramData\Jenkins\.jenkins\tools\hudson.tasks.Maven_MavenInstallation\Maven C:\ProgramData\Jenkins\war\WEB-INF\lib\remoting-4.11.2.jar C:\ProgramData\Jenkins\.jenkins\plugins\maven-plugin\WEB-INF\lib\maven35-interceptor-1.13.jar C:\ProgramData\Jenkins\.jenkins\plugins\maven-plugin\WEB-INF\lib\maven3-interceptor-commons-1.13.jar 51837
+java_class_path (initial): C:\ProgramData\Jenkins\.jenkins\plugins\maven-plugin\WEB-INF\lib\maven35-agent-1.13.jar;C:\ProgramData\Jenkins\.jenkins\tools\hudson.tasks.Maven_MavenInstallation\Maven\boot\plexus-classworlds-2.6.0.jar;C:\ProgramData\Jenkins\.jenkins\tools\hudson.tasks.Maven_MavenInstallation\Maven/conf/logging
+Launcher Type: SUN_STANDARD
+
+Logging:
+Log output configuration:
+#0: stdout all=warning uptime,level,tags
+#1: stderr all=off uptime,level,tags
+
+Environment Variables:
+JAVA_HOME=C:\ProgramData\Jenkins\.jenkins\tools\hudson.model.JDK
+PATH=C:\ProgramData\Jenkins\.jenkins\tools\hudson.tasks.Maven_MavenInstallation\Maven/bin;C:\ProgramData\Jenkins\.jenkins\tools\hudson.model.JDK/bin;C:\ProgramData\Jenkins\.jenkins\tools\hudson.model.JDK/bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Android\platform-tools;C:\Program Files\Java\jdk-17.0.1\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Git\cmd;C:\Program Files (x86)\dotnet\;C:\Users\Admin\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Windows\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps
+USERNAME=DESKTOP-MC7UQM0$
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 165 Stepping 3, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10 , 64 bit Build 19041 (10.0.19041.1706)
+
+CPU:total 12 (initial active 12) (6 cores per cpu, 2 threads per core) family 6 model 165 stepping 3, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx, fma
+
+Memory: 4k page, physical 16411332k(3351948k free), swap 34481224k(5608k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (9.0.4+11) for windows-amd64 JRE (9.0.4+11), built on Dec 20 2017 02:18:54 by "mach5one" with MS VC++ 12.0 (VS2013)
+
+END.
