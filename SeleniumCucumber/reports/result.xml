@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="17.711087">
+    <testcase classname="Bookcart Application Testing" name="Bookcart Application Positive Testing" time="17.711087">
+        <system-out><![CDATA[Given I navigates to the Bookcart application...............................passed
+And I click on login user...................................................passed
+And I enter the "brucewayne" and "Bruce000".................................passed
+When I click on login button................................................passed
+Then Login should be successful.............................................passed
+Then I verify the profile name as "brucewayne"..............................passed
+And I can see list of books available.......................................passed
+Then I close the browser....................................................passed
+]]></system-out>
+    </testcase>
+</testsuite>
